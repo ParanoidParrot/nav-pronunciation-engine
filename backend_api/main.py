@@ -1,7 +1,7 @@
 from fastapi import FastAPI
-from routes import router
+from backend_api.routes import router
 
-app = FastAPI(title="Navigation Pronunciation API")
+app = FastAPI(title="Map Voice API")
 
 app.include_router(router)
 

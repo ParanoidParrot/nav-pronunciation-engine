@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from schemas import Instruction
+from backend_api.schemas import Instruction
 from pronunciation_engine.normalizer import normalize_instruction
 
 router = APIRouter()
