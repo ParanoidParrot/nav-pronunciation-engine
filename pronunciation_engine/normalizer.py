@@ -1,6 +1,8 @@
-from .abbreviations import ABBREVIATIONS
-from .numbers import normalize_numbers
-from .acronyms import ACRONYM_MAP
+from pronunciation_engine.acronyms import ACRONYM_MAP
+from pronunciation_engine.numbers import normalize_numbers
+from pronunciation_engine.units import expand_unit
+from pronunciation_engine.highways import expand_highway
+from pronunciation_engine.abbreviations import expand_abbreviation
 
 
 def normalize_instruction(text: str):
@@ -9,18 +11,12 @@ def normalize_instruction(text: str):
     normalized = []
 
     for token in tokens:
-        clean = token.lower().replace(".", "")
 
-        if clean in ABBREVIATIONS:
-            normalized.append(ABBREVIATIONS[clean])
-            continue
+        token = expand_highway(token)
+        token = expand_abbreviation(token)
+        token = normalize_numbers(token)
+        token = expand_unit(token)
 
-        if clean in ACRONYM_MAP:
-            normalized.append(ACRONYM_MAP[clean])
-            continue
-
-        token = normalize_numbers(clean)
-
-        normalized.append(token)
+        normalized.append(token.lower())
 
     return " ".join(normalized)
