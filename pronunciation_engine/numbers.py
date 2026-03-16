@@ -38,32 +38,78 @@ ORDINAL_MAP = {
     "37th": "thirty seventh",
     "38th": "thirty eighth",
     "39th": "thirty ninth",
-    "40th": "fortieth",
+    "40th": "fortieth"
 }
 
 
-CARDINAL_MAP = {
-    "10": "ten",
-    "20": "twenty",
-    "30": "thirty",
-    "40": "forty",
-    "50": "fifty",
-    "60": "sixty",
-    "70": "seventy",
-    "80": "eighty",
-    "90": "ninety",
-    "100": "hundred",
-    "200": "two hundred",
-}
+def number_to_words(num: int):
+
+    ones = {
+        0:"zero",
+        1:"one",
+        2:"two",
+        3:"three",
+        4:"four",
+        5:"five",
+        6:"six",
+        7:"seven",
+        8:"eight",
+        9:"nine",
+        10:"ten",
+        11:"eleven",
+        12:"twelve",
+        13:"thirteen",
+        14:"fourteen",
+        15:"fifteen",
+        16:"sixteen",
+        17:"seventeen",
+        18:"eighteen",
+        19:"nineteen"
+    }
+
+    tens = {
+        20:"twenty",
+        30:"thirty",
+        40:"forty",
+        50:"fifty",
+        60:"sixty",
+        70:"seventy",
+        80:"eighty",
+        90:"ninety"
+    }
+
+    if num < 20:
+        return ones[num]
+
+    if num < 100:
+        t = (num // 10) * 10
+        r = num % 10
+
+        if r == 0:
+            return tens[t]
+
+        return tens[t] + " " + ones[r]
+
+    if num < 1000:
+        h = num // 100
+        r = num % 100
+
+        if r == 0:
+            return ones[h] + " hundred"
+
+        return ones[h] + " hundred " + number_to_words(r)
+
+    return str(num)
 
 
 def normalize_numbers(token: str):
+
+    if token.isdigit():
+        return number_to_words(int(token))
+
     token_lower = token.lower()
 
     if token_lower in ORDINAL_MAP:
         return ORDINAL_MAP[token_lower]
-
-    if token_lower in CARDINAL_MAP:
-        return CARDINAL_MAP[token_lower]
 
     return token
