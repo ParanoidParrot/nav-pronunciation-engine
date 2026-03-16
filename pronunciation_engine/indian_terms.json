@@ -1,0 +1,27 @@
+{
+  "marg": {
+    "language": "hindi",
+    "meaning": "road",
+    "phonetic": "maarg"
+  },
+  "halli": {
+    "language": "kannada",
+    "meaning": "village",
+    "phonetic": "halli"
+  },
+  "pura": {
+    "language": "sanskrit",
+    "meaning": "town",
+    "phonetic": "pura"
+  },
+  "pete": {
+    "language": "kannada",
+    "meaning": "market area",
+    "phonetic": "pete"
+  },
+  "palli": {
+    "language": "telugu",
+    "meaning": "village",
+    "phonetic": "palli"
+  }
+}
