@@ -1,25 +1,37 @@
-import json
 import re
 from collections import Counter
 
+INPUT_FILE = "indian_street_data/named_roads.osm"
+OUTPUT_FILE = "indian_street_data/processed/suffix_counts.csv"
+
+MIN_SUFFIX_LEN = 3
+MAX_SUFFIX_LEN = 8
+
 suffix_counter = Counter()
 
-with open("../indian_street_data/india_roads.json") as f:
-    data = json.load(f)
+with open(INPUT_FILE, "r", encoding="utf-8") as f:
+    for line in f:
+        if 'k="name"' not in line:
+            continue
 
-for feature in data["features"]:
-    props = feature.get("properties", {})
-    name = props.get("name")
+        match = re.search(r'v="([^"]+)"', line)
+        if not match:
+            continue
 
-    if not name:
-        continue
+        name = match.group(1).lower()
+        words = re.findall(r"[a-z]+", name)
 
-    tokens = re.findall(r"[a-zA-Z]+", name.lower())
+        for word in words:
+            if len(word) < 6:
+                continue
 
-    if len(tokens) > 1:
-        suffix = tokens[-1]
-        suffix_counter[suffix] += 1
+            for i in range(MIN_SUFFIX_LEN, MAX_SUFFIX_LEN + 1):
+                suffix = word[-i:]
+                suffix_counter[suffix] += 1
 
+# save to csv
+with open(OUTPUT_FILE, "w", encoding="utf-8") as out:
+    for suffix, count in suffix_counter.most_common():
+        out.write(f"{suffix},{count}\n")
 
-for word, count in suffix_counter.most_common(50):
-    print(word, count)
+print(f"Saved to {OUTPUT_FILE}")

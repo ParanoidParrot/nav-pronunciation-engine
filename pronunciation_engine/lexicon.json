@@ -1,0 +1,38 @@
+{
+  "pur": {
+    "lang": "sanskrit",
+    "type": "city"
+  },
+  "halli": {
+    "lang": "kannada",
+    "type": "village"
+  },
+  "wadi": {
+    "lang": "marathi",
+    "type": "settlement"
+  },
+  "oor": {
+    "lang": "dravidian",
+    "type": "place"
+  },
+  "nagar": {
+    "lang": "sanskrit",
+    "type": "town"
+  },
+  "gaon": {
+    "lang": "hindi",
+    "type": "village"
+  },
+  "thanda": {
+    "lang": "tribal",
+    "type": "settlement"
+  },
+  "aram": {
+    "lang": "tamil",
+    "type": "area"
+  },
+  "palle": {
+    "lang": "telugu",
+    "type": "village"
+  }
+}

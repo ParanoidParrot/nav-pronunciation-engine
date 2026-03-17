@@ -7,7 +7,7 @@ load_dotenv()
 
 client = SarvamAI(api_subscription_key=os.getenv("SARVAM_API_KEY"))
 
-def text_to_speech_file(text, filename="nav_audio.wav"):
+def text_to_speech_file(text: str, filename: str):
 
     response = client.text_to_speech.convert(
         text=text,

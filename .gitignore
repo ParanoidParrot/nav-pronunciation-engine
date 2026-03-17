@@ -3,3 +3,6 @@
 __pycache__
 indian_street_data/india-latest.osm.pbf
 .DS_Store
+pronunciation_engine/__pycache__/normalizer.cpython-311.pyc
+scripts/audio_outputs
+nav_audio.wav

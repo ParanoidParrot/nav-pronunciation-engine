@@ -5,6 +5,7 @@ from pronunciation_engine.highways import expand_highway
 from pronunciation_engine.abbreviations import expand_abbreviation
 from pronunciation_engine.distance import normalize_distance
 from pronunciation_engine.tokenizer import tokenize
+from pronunciation_engine.word_splitter import split_word
 
 def normalize_instruction(text: str):
 
@@ -22,3 +23,13 @@ def normalize_instruction(text: str):
         normalized.append(token.lower())
 
     return " ".join(normalized)
+
+def normalize(text: str):
+    words = text.lower().split()
+
+    processed = []
+    for word in words:
+        split = split_word(word)
+        processed.append(split)
+
+    return " ".join(processed)
