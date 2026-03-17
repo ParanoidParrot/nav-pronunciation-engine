@@ -1,8 +1,16 @@
 .env
 .venv
 __pycache__
+*.osm
+*.pbf
+indian_street_data/india_roads.osm.pbf
+indian_street_data/india_roads.osm
 indian_street_data/india-latest.osm.pbf
 indian_street_data/named_roads.osm
+indian_street_data/named_roads.osm.pbf
+indian_street_data/roads.geojsonl
+indian_street_data/indian_road_names.csv
+indian_street_data/india_roads.json
 .DS_Store
 pronunciation_engine/__pycache__/normalizer.cpython-311.pyc
 scripts/audio_outputs
