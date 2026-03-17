@@ -2,3 +2,4 @@
 .venv
 __pycache__
 indian_street_data/india-latest.osm.pbf
+.DS_Store
