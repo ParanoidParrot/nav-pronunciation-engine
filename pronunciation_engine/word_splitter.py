@@ -6,6 +6,8 @@ def split_word(word: str):
 
     if suffix:
         base = word[:-len(suffix)]
-        return f"{base} {suffix}"
+
+        if base:
+            return f"{base} {suffix}"
 
     return word

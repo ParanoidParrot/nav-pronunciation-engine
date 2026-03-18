@@ -20,6 +20,9 @@ def normalize_instruction(text: str):
         token = normalize_numbers(token)
         token = expand_unit(token)
 
+        if isinstance(token, str):
+            token = split_word(token)
+            
         normalized.append(token.lower())
 
     return " ".join(normalized)

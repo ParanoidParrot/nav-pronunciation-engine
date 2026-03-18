@@ -22,49 +22,66 @@ Navigation systems often mispronounce Indian street names due to:
 
 ## Tech Stack
 
-Python (FastAPI, data processing)
+| Python | FastAPI, data processing |
+| OpenStreetMap | Geospatial data |
+| Sarvam AI | Text-to-Speech | 
 
-OpenStreetMap (geospatial data)
-
-Sarvam AI (Text-to-Speech)
-
-Regex + rule-based NLP
 
 ## How to Run
-1. Setup environment
+-  Setup environment
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
-2. Install dependencies
-python -m pip install -r requirements.txt
-3. Run demo
-python -m scripts.voice_demo
+```
 
+- Install dependencies
+```bash
+python -m pip install -r requirements.txt
+```
+
+- Run demo
+```bash
+python -m scripts.voice_demo
+```
 
 Audio files will be generated in:
 scripts/audio_outputs/
 
 
+
+## Audio Comparison
+
+MapVoice can generate before / after speech samples for the same navigation instruction:
+
+- **Raw**: original navigation text
+- **Normalized**: text after MapVoice expansion and suffix-aware processing
+
+### Example
+**Input**
+```text
+Turn left onto NH 44 after 500m near Hosakerehalli
+```
+
+**Output - Normalized**
+```text
+turn left onto national higway forty four after five hundred metres near hosakere halli
+```
+
+
 ## Key Highlights
 
 - Data-driven linguistic modeling using real map data
-
 - Handles Indian multilingual naming patterns
-
 - Improves TTS without modifying the speech model
-
 - Modular pipeline (normalization → parsing → TTS)
 
 ## Future Work
 
-Multi-language script injection (e.g, Kannada, Hindi, Tamil)
-
-Route playback simulation (real-time navigation)
-
-Before vs after pronunciation comparison engine
-
-Expanded linguistic lexicon with regional metadata
-
-Android / iOS prototype integration
+- Multi-language script injection (e.g, Kannada, Hindi, Tamil)
+- Route playback simulation (real-time navigation)
+- Before vs after pronunciation comparison engine
+- Expanded linguistic lexicon with regional metadata
+- Android / iOS prototype integration
 
 
 

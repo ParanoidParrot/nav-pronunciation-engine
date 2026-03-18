@@ -3,6 +3,10 @@
     "lang": "sanskrit",
     "type": "city"
   },
+  "puram": {
+    "lang": "sanskrit",
+    "type": "city"
+  },
   "halli": {
     "lang": "kannada",
     "type": "village"
@@ -12,6 +16,10 @@
     "type": "settlement"
   },
   "oor": {
+    "lang": "dravidian",
+    "type": "place"
+  },
+  "uru": {
     "lang": "dravidian",
     "type": "place"
   },
@@ -34,5 +42,17 @@
   "palle": {
     "lang": "telugu",
     "type": "village"
+  },
+  "kere": {
+    "lang": "kannada",
+    "type": "lake area"
+  },
+  "palya": {
+    "lang": "kannada",
+    "type": "settlement"
+  },
+  "marg": {
+    "lang": "hindi",
+    "type": "street"
   }
 }
