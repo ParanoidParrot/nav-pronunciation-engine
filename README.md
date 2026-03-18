@@ -2,11 +2,14 @@
 
 **MapVoice** is a navigation pronunciation engine that improves the pronunciation of Indian street names in GPS navigation systems.
 
-This project demonstrates how mixed-language street names (e.g., English + Indian languages) can be normalized and converted into natural-sounding speech for navigation instructions.
+This project demonstrates how mixed-language street names (e.g., English + Indian languages) can be normalized and converted into natural-sounding speech for navigation instructions. The system transforms raw navigation instructions into speech-friendly text before generating audio. Aim is to improve TTS output for Indian place names by combining:
 
-## Repository
+- map-derived linguistic data
+- suffix-aware normalization
+- word splitting
+- speech synthesis using Sarvam AI
 
-`nav-pronunciation-engine`
+
 
 ## Problem
 
@@ -17,18 +20,53 @@ Navigation systems often mispronounce Indian street names due to:
 - transliterated names
 - acronyms (BDA, NIT)
 
-Example:
 
-Google Maps instruction:
+## Tech Stack
 
-Turn right onto **Dr Rajkumar Rd**
+Python (FastAPI, data processing)
 
-Typical pronunciation:
+OpenStreetMap (geospatial data)
 
-"Turn right onto **D-R Rajkumar R-D**"
+Sarvam AI (Text-to-Speech)
 
-MapVoice output:
+Regex + rule-based NLP
 
-"Turn right onto **Doctor Rajkumar Road**"
+## How to Run
+1. Setup environment
+python3 -m venv .venv
+source .venv/bin/activate
+2. Install dependencies
+python -m pip install -r requirements.txt
+3. Run demo
+python -m scripts.voice_demo
+
+
+Audio files will be generated in:
+scripts/audio_outputs/
+
+
+# Key Highlights
+
+- Data-driven linguistic modeling using real map data
+
+- Handles Indian multilingual naming patterns
+
+- Improves TTS without modifying the speech model
+
+- Modular pipeline (normalization → parsing → TTS)
+
+# Future Work
+
+Multi-language script injection (e.g, Kannada, Hindi, Tamil)
+
+Route playback simulation (real-time navigation)
+
+Before vs after pronunciation comparison engine
+
+Expanded linguistic lexicon with regional metadata
+
+Android / iOS prototype integration
+
+
 
 ## System Architecture

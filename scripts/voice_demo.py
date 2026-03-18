@@ -1,5 +1,5 @@
 import os
-from pronunciation_engine.normalizer import normalize_instruction
+#from pronunciation_engine.normalizer import normalize_instruction
 from pronunciation_engine.normalizer import normalize
 from pronunciation_engine.tts_engine import text_to_speech_file
 
@@ -14,7 +14,9 @@ test_sentences = [
     "Turn left at Hosakerehalli",
     "Continue to Rajajinagar",
     "Go to Anantapuram",
-    "Head towards Bidarwadi"
+    "Head towards Bidarwadi",
+    "Turn left to kaikondrahalli"
+
 ]
 
 for i, text in enumerate(test_sentences):
