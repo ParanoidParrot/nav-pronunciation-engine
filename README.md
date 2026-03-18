@@ -10,7 +10,6 @@ This project demonstrates how mixed-language street names (e.g., English + India
 - speech synthesis using Sarvam AI
 
 
-
 ## Problem
 
 Navigation systems often mispronounce Indian street names due to:
@@ -45,7 +44,7 @@ Audio files will be generated in:
 scripts/audio_outputs/
 
 
-# Key Highlights
+## Key Highlights
 
 - Data-driven linguistic modeling using real map data
 
@@ -55,7 +54,7 @@ scripts/audio_outputs/
 
 - Modular pipeline (normalization → parsing → TTS)
 
-# Future Work
+## Future Work
 
 Multi-language script injection (e.g, Kannada, Hindi, Tamil)
 
@@ -70,3 +69,23 @@ Android / iOS prototype integration
 
 
 ## System Architecture
+
+```mermaid
+flowchart TD 
+    A[Raw Navigation Instruction] --> B[Tokenizer] 
+    B --> C[Rule-based Normalizer]
+     C --> D[Number & Distance Expansion] 
+     D --> E[Abbreviation Expansion] 
+     E --> F[Suffix Detector] 
+     F --> G[Word Splitter] 
+     G --> H[Phonetic-friendly Text] 
+     H --> I[Sarvam TTS Engine] 
+     I --> J[Audio Output] 
+     
+     %% Data pipeline 
+     K[OpenStreetMap India Dataset] --> L[Named Road Extraction] 
+     L --> M[Suffix Mining]
+     M --> N[Suffix Cleaning & Clustering] 
+     N --> O[Lexicon Builder] 
+     O --> P[lexicon.json] 
+     P --> F
