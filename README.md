@@ -22,10 +22,11 @@ Navigation systems often mispronounce Indian street names due to:
 
 ## Tech Stack
 
-|--------|----------|
+| Technology | Use Case |
+| :--- | :--- |
 | Python | FastAPI, data processing |
 | OpenStreetMap | Geospatial data |
-| Sarvam AI | Text-to-Speech | 
+| Sarvam AI | Text-to-Speech |
 
 
 ## How to Run
