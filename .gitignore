@@ -13,5 +13,8 @@ indian_street_data/indian_road_names.csv
 indian_street_data/india_roads.json
 .DS_Store
 pronunciation_engine/__pycache__/normalizer.cpython-311.pyc
-scripts/audio_outputs
-nav_audio.wav
+scripts/audio_outputs/cached
+scripts/audio_outputs/raw
+scripts/audio_outputs/normalized
+scripts/audio_outputs/metadata
+backend_api/generated_audio
