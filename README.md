@@ -56,16 +56,7 @@ MapVoice can generate before / after speech samples for the same navigation inst
 - **Raw**: original navigation text
 - **Normalized**: text after MapVoice expansion and suffix-aware processing
 
-### Example
-**Input**
-```text
-Turn left onto NH 44 after 500m near Hosakerehalli
-```
-
-**Output - Normalized**
-```text
-turn left onto national higway forty four after five hundred metres near hosakere halli
-```
+Try it out: [TryItHere](https://nav-pronunciation-engine-production.up.railway.app/demo)
 
 
 ## Key Highlights
