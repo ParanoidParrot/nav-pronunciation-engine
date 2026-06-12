@@ -104,7 +104,7 @@ def get_demo_html() -> HTMLResponse:
                     originalText.textContent = data.original_text;
                     normalizedTextAudio.textContent = data.normalized_text;
 
-                    rawAudio.src = data.original_audio_url;
+                    rawAudio.src = data.raw_audio_url;
                     normalizedAudio.src = data.normalized_audio_url;
 
                     rawAudio.load();

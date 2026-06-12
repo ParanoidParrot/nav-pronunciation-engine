@@ -79,6 +79,6 @@ def compare_audio(data: Instruction):
     return DemoCompareResponse(
         original_text=original_text,
         normalized_text=normalized_text,
-        original_audio_url=f"/audio/{raw_file.name}",
+        raw_audio_url=f"/audio/{raw_file.name}",
         normalized_audio_url=f"/audio/{norm_file.name}",
     )
