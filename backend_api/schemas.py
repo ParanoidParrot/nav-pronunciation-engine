@@ -7,5 +7,5 @@ class DemoCompareResponse(BaseModel):
     original_text: str
     normalized_text: str
     speech_text: str
-    original_audio_url: str
+    raw_audio_url: str
     normalized_audio_url: str
