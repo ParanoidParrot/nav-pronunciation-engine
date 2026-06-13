@@ -6,6 +6,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import FileResponse
 
 from backend_api.schemas import Instruction, DemoCompareResponse
+from pronunciation_engine.pronunciation_hints import apply_pronunciation_hints
 from pronunciation_engine.normalizer import normalize_instruction
 from pronunciation_engine.tts_engine import text_to_speech_file
 
@@ -50,6 +51,7 @@ def get_audio(filename: str):
 def compare_audio(data: Instruction):
     original_text = data.instruction
     normalized_text = normalize_instruction(original_text)
+    speech_text = apply_pronunciation_hints(normalized_text)
 
     raw_slug = _slugify(original_text)
     norm_slug = _slugify(normalized_text)
@@ -61,7 +63,7 @@ def compare_audio(data: Instruction):
     norm_file = GENERATED_AUDIO_DIR / f"normalized_{norm_slug}_{norm_hash}.wav"
 
     text_to_speech_file(
-        text=original_text,
+        text=speech_text,
         filename=str(raw_file),
         target_language_code="en-IN",
         speaker="anushka",
@@ -69,7 +71,7 @@ def compare_audio(data: Instruction):
     )
 
     text_to_speech_file(
-        text=normalized_text,
+        text=speech_text,
         filename=str(norm_file),
         target_language_code="en-IN",
         speaker="anushka",
@@ -79,6 +81,7 @@ def compare_audio(data: Instruction):
     return DemoCompareResponse(
         original_text=original_text,
         normalized_text=normalized_text,
+        speech_text=speech_text,
         raw_audio_url=f"/audio/{raw_file.name}",
         normalized_audio_url=f"/audio/{norm_file.name}",
     )
