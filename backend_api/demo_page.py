@@ -541,7 +541,7 @@ def get_demo_html() -> HTMLResponse:
                     typeText(normalizedText, data.normalized_text || "No normalized text returned.");
                     typeText(speechText, data.speech_text || data.normalized_text || "No speech text returned.");
 
-                    rawAudio.src = data.original_audio_url;
+                    rawAudio.src = data.raw_audio_url;
                     normalizedAudio.src = data.normalized_audio_url;
 
                     rawAudio.load();
