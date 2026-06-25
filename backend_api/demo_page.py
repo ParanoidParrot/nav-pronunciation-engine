@@ -9,85 +9,517 @@ def get_demo_html() -> HTMLResponse:
         <title>MapVoice Demo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>
-            body {
-                font-family: Arial, sans-serif;
-                max-width: 860px;
-                margin: 40px auto;
-                padding: 0 16px;
-                line-height: 1.5;
+            :root {
+                --bg: #061b1f;
+                --bg-soft: #09272d;
+                --card: rgba(255, 255, 255, 0.08);
+                --card-border: rgba(255, 255, 255, 0.14);
+                --teal: #14b8a6;
+                --teal-light: #5eead4;
+                --white: #ffffff;
+                --muted: #b8d8d5;
+                --warning: #facc15;
+                --danger: #fb7185;
+                --shadow: rgba(20, 184, 166, 0.22);
             }
-            textarea, button {
-                width: 100%;
+
+            * {
                 box-sizing: border-box;
-                margin-top: 8px;
-                margin-bottom: 16px;
-                padding: 10px;
-                font-size: 16px;
             }
-            button {
-                cursor: pointer;
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+                color: var(--white);
+                background:
+                    radial-gradient(circle at top left, rgba(20, 184, 166, 0.28), transparent 34%),
+                    radial-gradient(circle at 80% 20%, rgba(94, 234, 212, 0.12), transparent 30%),
+                    linear-gradient(135deg, #031113 0%, var(--bg) 48%, #021012 100%);
             }
-            .card {
-                border: 1px solid #ddd;
-                border-radius: 8px;
-                padding: 16px;
-                margin-top: 20px;
+
+            .page {
+                width: min(1080px, 100%);
+                margin: 0 auto;
+                padding: 36px 20px 48px;
             }
-            .section-title {
+
+            .nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 58px;
+            }
+
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--white);
+                font-weight: 800;
+                letter-spacing: 0.08em;
+                text-transform: lowercase;
+            }
+
+            .logo {
+                width: 36px;
+                height: 36px;
+                border-radius: 12px;
+                display: grid;
+                place-items: center;
+                color: #03201d;
+                font-weight: 900;
+                background: linear-gradient(135deg, var(--teal-light), var(--teal));
+                box-shadow: 0 0 28px var(--shadow);
+            }
+
+            .pill {
+                border: 1px solid var(--card-border);
+                background: rgba(255,255,255,0.06);
+                color: var(--muted);
+                padding: 8px 12px;
+                border-radius: 999px;
+                font-size: 13px;
+            }
+
+            .hero {
+                display: grid;
+                grid-template-columns: 1.05fr 0.95fr;
+                gap: 30px;
+                align-items: start;
+            }
+
+            .eyebrow {
+                color: var(--teal-light);
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                font-size: 13px;
+                margin-bottom: 18px;
+            }
+
+            h1 {
+                font-size: clamp(42px, 7vw, 82px);
+                line-height: 0.94;
+                letter-spacing: -0.06em;
+                margin: 0;
+            }
+
+            .animated-word {
+                display: inline-block;
+                color: var(--teal-light);
+                text-shadow: 0 0 24px rgba(94, 234, 212, 0.34);
+                animation: shimmer 2.4s ease-in-out infinite;
+            }
+
+            @keyframes shimmer {
+                0%, 100% {
+                    opacity: 1;
+                    transform: translateY(0);
+                    filter: drop-shadow(0 0 0 rgba(94, 234, 212, 0));
+                }
+                50% {
+                    opacity: 0.84;
+                    transform: translateY(-2px);
+                    filter: drop-shadow(0 0 12px rgba(94, 234, 212, 0.65));
+                }
+            }
+
+            .subtitle {
+                color: var(--muted);
+                font-size: 19px;
+                line-height: 1.65;
+                margin: 24px 0 28px;
+                max-width: 680px;
+            }
+
+            .hero-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                margin-bottom: 28px;
+            }
+
+            .button-link {
+                text-decoration: none;
+                color: #021916;
+                background: var(--teal-light);
+                font-weight: 800;
+                border-radius: 999px;
+                padding: 12px 18px;
+                box-shadow: 0 12px 30px rgba(20, 184, 166, 0.25);
+            }
+
+            .button-link.secondary {
+                color: var(--white);
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid var(--card-border);
+                box-shadow: none;
+            }
+
+            .demo-card {
+                background: linear-gradient(180deg, rgba(255,255,255,0.105), rgba(255,255,255,0.055));
+                border: 1px solid var(--card-border);
+                border-radius: 28px;
+                padding: 22px;
+                box-shadow: 0 24px 90px rgba(0,0,0,0.35);
+                backdrop-filter: blur(18px);
+            }
+
+            .demo-card h2 {
+                margin: 0 0 8px;
+                font-size: 22px;
+            }
+
+            .demo-card p {
+                color: var(--muted);
                 margin-top: 0;
             }
+
+            textarea {
+                width: 100%;
+                min-height: 124px;
+                resize: vertical;
+                border-radius: 18px;
+                border: 1px solid rgba(255,255,255,0.16);
+                background: rgba(0, 0, 0, 0.24);
+                color: var(--white);
+                padding: 15px;
+                font-size: 15px;
+                outline: none;
+                line-height: 1.5;
+            }
+
+            textarea:focus {
+                border-color: var(--teal-light);
+                box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.14);
+            }
+
+            button {
+                border: none;
+                cursor: pointer;
+                border-radius: 999px;
+                padding: 13px 16px;
+                font-size: 15px;
+                font-weight: 800;
+                color: #041b18;
+                background: linear-gradient(135deg, var(--teal-light), var(--teal));
+                transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
+                box-shadow: 0 14px 34px rgba(20, 184, 166, 0.22);
+            }
+
+            button:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 16px 42px rgba(20, 184, 166, 0.28);
+            }
+
+            button:disabled {
+                opacity: 0.65;
+                cursor: wait;
+                transform: none;
+            }
+
+            .sample-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+                margin: 16px 0;
+            }
+
+            .sample {
+                color: var(--white);
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid var(--card-border);
+                box-shadow: none;
+                font-weight: 650;
+                text-align: left;
+                border-radius: 16px;
+                padding: 11px 13px;
+            }
+
+            .primary-action {
+                width: 100%;
+                margin-top: 4px;
+            }
+
+            .status {
+                margin-top: 14px;
+                color: var(--teal-light);
+                font-weight: 700;
+                min-height: 24px;
+            }
+
+            .status.error {
+                color: var(--danger);
+            }
+
+            .output-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 16px;
+                margin-top: 28px;
+            }
+
+            .output-card {
+                background: var(--card);
+                border: 1px solid var(--card-border);
+                border-radius: 24px;
+                padding: 18px;
+                min-height: 170px;
+            }
+
+            .output-card h3 {
+                margin: 0 0 12px;
+                font-size: 15px;
+                color: var(--teal-light);
+                text-transform: uppercase;
+                letter-spacing: 0.09em;
+            }
+
             code {
+                color: var(--white);
                 white-space: pre-wrap;
                 word-break: break-word;
+                line-height: 1.55;
+                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+                font-size: 14px;
             }
+
             audio {
                 width: 100%;
-                margin-top: 8px;
+                margin-top: 14px;
+            }
+
+            .features {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 16px;
+                margin-top: 34px;
+            }
+
+            .feature {
+                background: rgba(255,255,255,0.06);
+                border: 1px solid var(--card-border);
+                border-radius: 22px;
+                padding: 18px;
+            }
+
+            .feature strong {
+                display: block;
+                color: var(--white);
+                margin-bottom: 8px;
+            }
+
+            .feature span {
+                color: var(--muted);
+                font-size: 14px;
+                line-height: 1.5;
+            }
+
+            .footer {
+                margin-top: 34px;
+                color: rgba(255,255,255,0.56);
+                font-size: 14px;
+                text-align: center;
+            }
+
+            .typing {
+                position: relative;
+            }
+
+            .typing::after {
+                content: "";
+                display: inline-block;
+                width: 8px;
+                height: 1.1em;
+                margin-left: 3px;
+                background: var(--teal-light);
+                vertical-align: -2px;
+                animation: blink 0.9s steps(2, start) infinite;
+            }
+
+            @keyframes blink {
+                50% {
+                    opacity: 0;
+                }
+            }
+
+            @media (max-width: 880px) {
+                .hero {
+                    grid-template-columns: 1fr;
+                }
+
+                .output-grid,
+                .features {
+                    grid-template-columns: 1fr;
+                }
+
+                .sample-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .nav {
+                    margin-bottom: 36px;
+                }
             }
         </style>
     </head>
+
     <body>
-        <h1>MapVoice Demo</h1>
-        <p>Paste a navigation instruction and compare raw vs normalized TTS output.</p>
+        <main class="page">
+            <nav class="nav">
+                <div class="brand">
+                    <div class="logo">MV</div>
+                    <span>mapvoice</span>
+                </div>
+                <div class="pill">Indian navigation pronunciation engine</div>
+            </nav>
 
-        <label for="instruction">Navigation instruction</label>
-        <textarea id="instruction" rows="4">Turn left onto NH 44 after 500m near Hosakerehalli</textarea>
+            <section class="hero">
+                <div>
+                    <div class="eyebrow">speech-aware routing text</div>
+                    <h1>
+                        Make Indian place names sound
+                        <span class="animated-word">closer</span>.
+                    </h1>
+                    <p class="subtitle">
+                        MapVoice normalizes navigation-style instructions, expands road abbreviations,
+                        applies Indian place-name pronunciation hints, and generates raw vs normalized
+                        speech using TTS.
+                    </p>
 
-        <button onclick="compareAudio()">Normalize + Generate Audio</button>
+                    <div class="hero-actions">
+                        <a class="button-link" href="#demo">Try live demo</a>
+                        <a class="button-link secondary" href="/docs">API docs</a>
+                    </div>
 
-        <div class="card">
-            <h3 class="section-title">Normalized Output</h3>
-            <code id="normalizedText">Waiting...</code>
-        </div>
+                    <div class="features">
+                        <div class="feature">
+                            <strong>Suffix-aware</strong>
+                            <span>Splits words like Hosakerehalli into pronunciation-friendly parts.</span>
+                        </div>
+                        <div class="feature">
+                            <strong>Road aware</strong>
+                            <span>Expands NH, road units, distances, and ordinals for speech.</span>
+                        </div>
+                        <div class="feature">
+                            <strong>TTS ready</strong>
+                            <span>Generates before/after audio for comparison and demos.</span>
+                        </div>
+                        <div class="feature">
+                            <strong>Prototype app</strong>
+                            <span>Backend + Android MVP for portfolio and Play testing.</span>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="card">
-            <h3 class="section-title">Raw Audio</h3>
-            <p><strong>Original text:</strong></p>
-            <code id="originalText">Waiting...</code>
-            <audio id="rawAudio" controls></audio>
-        </div>
+                <div id="demo" class="demo-card">
+                    <h2>Live pronunciation demo</h2>
+                    <p>Enter a navigation instruction or pick a sample.</p>
 
-        <div class="card">
-            <h3 class="section-title">Normalized Audio</h3>
-            <p><strong>Normalized text:</strong></p>
-            <code id="normalizedTextAudio">Waiting...</code>
-            <audio id="normalizedAudio" controls></audio>
-        </div>
+                    <textarea id="instruction">Turn left onto NH 44 after 500m near Hosakerehalli</textarea>
+
+                    <div class="sample-grid">
+                        <button class="sample" onclick="setSample('Turn left onto NH 44 after 500m near Hosakerehalli')">Hosakerehalli</button>
+                        <button class="sample" onclick="setSample('Continue towards Rajajinagar')">Rajajinagar</button>
+                        <button class="sample" onclick="setSample('Take the next right near Basavanagudi')">Basavanagudi</button>
+                        <button class="sample" onclick="setSample('Head towards Marathahalli bridge')">Marathahalli</button>
+                        <button class="sample" onclick="setSample('Continue to Banashankari')">Banashankari</button>
+                        <button class="sample" onclick="setSample('Turn right after 100m near Indiranagar')">Indiranagar</button>
+                    </div>
+
+                    <button id="generateButton" class="primary-action" onclick="compareAudio()">
+                        Normalize + Generate Audio
+                    </button>
+
+                    <div id="status" class="status"></div>
+                </div>
+            </section>
+
+            <section class="output-grid">
+                <div class="output-card">
+                    <h3>Original</h3>
+                    <code id="originalText">Waiting for input...</code>
+                    <audio id="rawAudio" controls preload="none"></audio>
+                </div>
+
+                <div class="output-card">
+                    <h3>Normalized</h3>
+                    <code id="normalizedText">Waiting for output...</code>
+                </div>
+
+                <div class="output-card">
+                    <h3>Speech Text</h3>
+                    <code id="speechText">Waiting for pronunciation hints...</code>
+                    <audio id="normalizedAudio" controls preload="none"></audio>
+                </div>
+            </section>
+
+            <div class="footer">
+                MapVoice · pronunciation-aware normalization for Indian navigation-style text
+            </div>
+        </main>
 
         <script>
-            async function compareAudio() {
-                const instruction = document.getElementById("instruction").value;
-                const normalizedText = document.getElementById("normalizedText");
-                const originalText = document.getElementById("originalText");
-                const normalizedTextAudio = document.getElementById("normalizedTextAudio");
+            function setSample(text) {
+                document.getElementById("instruction").value = text;
+                clearOutputs();
+            }
+
+            function clearOutputs() {
+                document.getElementById("originalText").textContent = "Waiting for input...";
+                document.getElementById("normalizedText").textContent = "Waiting for output...";
+                document.getElementById("speechText").textContent = "Waiting for pronunciation hints...";
+                document.getElementById("status").textContent = "";
+
                 const rawAudio = document.getElementById("rawAudio");
                 const normalizedAudio = document.getElementById("normalizedAudio");
 
-                normalizedText.textContent = "Loading...";
-                originalText.textContent = "Loading...";
-                normalizedTextAudio.textContent = "Loading...";
                 rawAudio.removeAttribute("src");
                 normalizedAudio.removeAttribute("src");
+                rawAudio.load();
+                normalizedAudio.load();
+            }
+
+            function typeText(element, text, delay = 14) {
+                element.textContent = "";
+                element.classList.add("typing");
+
+                let i = 0;
+                const timer = setInterval(() => {
+                    element.textContent += text.charAt(i);
+                    i += 1;
+
+                    if (i >= text.length) {
+                        clearInterval(timer);
+                        element.classList.remove("typing");
+                    }
+                }, delay);
+            }
+
+            async function compareAudio() {
+                const instruction = document.getElementById("instruction").value;
+                const generateButton = document.getElementById("generateButton");
+                const status = document.getElementById("status");
+
+                const originalText = document.getElementById("originalText");
+                const normalizedText = document.getElementById("normalizedText");
+                const speechText = document.getElementById("speechText");
+                const rawAudio = document.getElementById("rawAudio");
+                const normalizedAudio = document.getElementById("normalizedAudio");
+
+                generateButton.disabled = true;
+                status.classList.remove("error");
+                status.textContent = "Generating speech comparison...";
+
+                originalText.textContent = "Loading...";
+                normalizedText.textContent = "Loading...";
+                speechText.textContent = "Loading...";
+
+                rawAudio.removeAttribute("src");
+                normalizedAudio.removeAttribute("src");
+                rawAudio.load();
+                normalizedAudio.load();
 
                 try {
                     const response = await fetch("/demo/compare", {
@@ -98,21 +530,33 @@ def get_demo_html() -> HTMLResponse:
                         body: JSON.stringify({ instruction })
                     });
 
+                    if (!response.ok) {
+                        const errorText = await response.text();
+                        throw new Error("Backend error " + response.status + ": " + errorText);
+                    }
+
                     const data = await response.json();
 
-                    normalizedText.textContent = data.normalized_text;
-                    originalText.textContent = data.original_text;
-                    normalizedTextAudio.textContent = data.normalized_text;
+                    typeText(originalText, data.original_text || instruction);
+                    typeText(normalizedText, data.normalized_text || "No normalized text returned.");
+                    typeText(speechText, data.speech_text || data.normalized_text || "No speech text returned.");
 
-                    rawAudio.src = data.raw_audio_url;
+                    rawAudio.src = data.original_audio_url;
                     normalizedAudio.src = data.normalized_audio_url;
 
                     rawAudio.load();
                     normalizedAudio.load();
+
+                    status.textContent = "Ready. Play raw audio, then normalized audio.";
                 } catch (err) {
-                    normalizedText.textContent = "Error: " + err.message;
+                    status.classList.add("error");
+                    status.textContent = "Error: " + err.message;
+
                     originalText.textContent = "Error";
-                    normalizedTextAudio.textContent = "Error";
+                    normalizedText.textContent = "Error";
+                    speechText.textContent = "Error";
+                } finally {
+                    generateButton.disabled = false;
                 }
             }
         </script>
