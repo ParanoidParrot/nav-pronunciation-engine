@@ -10,9 +10,13 @@ app = FastAPI(title="Map Voice API")
 app.include_router(router)
 
 @app.get("/")
-def health():
-    return {"status": "running"}
+def home():
+    return get_demo_html()
 
 @app.get("/demo")
 def demo():
     return get_demo_html()
+
+@app.get("/health")
+def health():
+    return {"status": "running"}

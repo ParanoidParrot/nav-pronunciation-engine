@@ -10,17 +10,18 @@ def get_demo_html() -> HTMLResponse:
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>
             :root {
-                --bg: #061b1f;
-                --bg-soft: #09272d;
-                --card: rgba(255, 255, 255, 0.08);
-                --card-border: rgba(255, 255, 255, 0.14);
-                --teal: #14b8a6;
-                --teal-light: #5eead4;
-                --white: #ffffff;
-                --muted: #b8d8d5;
-                --warning: #facc15;
-                --danger: #fb7185;
-                --shadow: rgba(20, 184, 166, 0.22);
+                --bg: #111827;
+                --bg-soft: #1F2937;
+                --card: rgba(31, 41, 55, 0.82);
+                --card-border: rgba(209, 213, 219, 0.18);
+                --accent: #A7C957;
+                --accent-light: #CDE990;
+                --white: #F9FAFB;
+                --text: #F9FAFB;
+                --muted: #D1D5DB;
+                --warning: #FBBF24;
+                --danger: #FB7185;
+                --shadow: rgba(167, 201, 87, 0.12);
             }
 
             * {
@@ -58,7 +59,7 @@ def get_demo_html() -> HTMLResponse:
                 color: var(--white);
                 font-weight: 800;
                 letter-spacing: 0.08em;
-                text-transform: lowercase;
+                
             }
 
             .logo {
@@ -69,7 +70,7 @@ def get_demo_html() -> HTMLResponse:
                 place-items: center;
                 color: #03201d;
                 font-weight: 900;
-                background: linear-gradient(135deg, var(--teal-light), var(--teal));
+                background: linear-gradient(135deg, var(--accent-light), var(--accent));
                 box-shadow: 0 0 28px var(--shadow);
             }
 
@@ -90,7 +91,7 @@ def get_demo_html() -> HTMLResponse:
             }
 
             .eyebrow {
-                color: var(--teal-light);
+                color: var(--accent-light);
                 font-weight: 700;
                 letter-spacing: 0.12em;
                 text-transform: uppercase;
@@ -107,7 +108,7 @@ def get_demo_html() -> HTMLResponse:
 
             .animated-word {
                 display: inline-block;
-                color: var(--teal-light);
+                color: var(--accent-light);
                 text-shadow: 0 0 24px rgba(94, 234, 212, 0.34);
                 animation: shimmer 2.4s ease-in-out infinite;
             }
@@ -143,7 +144,7 @@ def get_demo_html() -> HTMLResponse:
             .button-link {
                 text-decoration: none;
                 color: #021916;
-                background: var(--teal-light);
+                background: var(--accent-light);
                 font-weight: 800;
                 border-radius: 999px;
                 padding: 12px 18px;
@@ -191,7 +192,7 @@ def get_demo_html() -> HTMLResponse:
             }
 
             textarea:focus {
-                border-color: var(--teal-light);
+                border-color: var(--accent-light);
                 box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.14);
             }
 
@@ -203,7 +204,7 @@ def get_demo_html() -> HTMLResponse:
                 font-size: 15px;
                 font-weight: 800;
                 color: #041b18;
-                background: linear-gradient(135deg, var(--teal-light), var(--teal));
+                background: linear-gradient(135deg, var(--accent-light), var(--accent));
                 transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
                 box-shadow: 0 14px 34px rgba(20, 184, 166, 0.22);
             }
@@ -244,7 +245,7 @@ def get_demo_html() -> HTMLResponse:
 
             .status {
                 margin-top: 14px;
-                color: var(--teal-light);
+                color: var(--accent-light);
                 font-weight: 700;
                 min-height: 24px;
             }
@@ -271,7 +272,7 @@ def get_demo_html() -> HTMLResponse:
             .output-card h3 {
                 margin: 0 0 12px;
                 font-size: 15px;
-                color: var(--teal-light);
+                color: var(--accent-light);
                 text-transform: uppercase;
                 letter-spacing: 0.09em;
             }
@@ -316,6 +317,22 @@ def get_demo_html() -> HTMLResponse:
                 line-height: 1.5;
             }
 
+            .provider-note {
+                margin-top: 18px;
+                padding: 14px 16px;
+                border: 1px solid var(--card-border);
+                border-radius: 18px;
+                background: rgba(255, 255, 255, 0.055);
+                color: var(--muted);
+                font-size: 14px;
+                line-height: 1.6;
+                text-align: center;
+            }
+
+            .provider-note strong {
+                color: var(--accent-light);
+            }
+
             .footer {
                 margin-top: 34px;
                 color: rgba(255,255,255,0.56);
@@ -333,7 +350,7 @@ def get_demo_html() -> HTMLResponse:
                 width: 8px;
                 height: 1.1em;
                 margin-left: 3px;
-                background: var(--teal-light);
+                background: var(--accent-light);
                 vertical-align: -2px;
                 animation: blink 0.9s steps(2, start) infinite;
             }
@@ -370,7 +387,7 @@ def get_demo_html() -> HTMLResponse:
             <nav class="nav">
                 <div class="brand">
                     <div class="logo">MV</div>
-                    <span>mapvoice</span>
+                    <span>MapVoice</span>
                 </div>
                 <div class="pill">Indian navigation pronunciation engine</div>
             </nav>
@@ -379,18 +396,17 @@ def get_demo_html() -> HTMLResponse:
                 <div>
                     <div class="eyebrow">speech-aware routing text</div>
                     <h1>
-                        Make Indian place names sound
-                        <span class="animated-word">closer</span>.
+                        Make Indian place names sound speech-friendly.
                     </h1>
                     <p class="subtitle">
                         MapVoice normalizes navigation-style instructions, expands road abbreviations,
-                        applies Indian place-name pronunciation hints, and generates raw vs normalized
-                        speech using TTS.
+                        applies Indian place-name pronunciation hints, and sends the speech-friendly text
+                        to Sarvam AI Text-to-Speech for raw vs normalized audio comparison.
                     </p>
 
                     <div class="hero-actions">
-                        <a class="button-link" href="#demo">Try live demo</a>
-                        <a class="button-link secondary" href="/docs">API docs</a>
+                        <a class="button-link" href="https://github.com/ParanoidParrot/nav-pronunciation-engine" target="_blank">View Source</a>
+                        <a class="button-link secondary" href="/docs" target="_blank">API docs</a>
                     </div>
 
                     <div class="features">
@@ -403,8 +419,8 @@ def get_demo_html() -> HTMLResponse:
                             <span>Expands NH, road units, distances, and ordinals for speech.</span>
                         </div>
                         <div class="feature">
-                            <strong>TTS ready</strong>
-                            <span>Generates before/after audio for comparison and demos.</span>
+                            <strong>Sarvam TTS</strong>
+                            <span>Speech synthesis is powered by Sarvam AI Text-to-Speech.</span>
                         </div>
                         <div class="feature">
                             <strong>Prototype app</strong>
@@ -417,15 +433,15 @@ def get_demo_html() -> HTMLResponse:
                     <h2>Live pronunciation demo</h2>
                     <p>Enter a navigation instruction or pick a sample.</p>
 
-                    <textarea id="instruction">Turn left onto NH 44 after 500m near Hosakerehalli</textarea>
+                    <textarea id="instruction">Turn left onto NH 44 after 500m near MG Marg</textarea>
 
                     <div class="sample-grid">
-                        <button class="sample" onclick="setSample('Turn left onto NH 44 after 500m near Hosakerehalli')">Hosakerehalli</button>
-                        <button class="sample" onclick="setSample('Continue towards Rajajinagar')">Rajajinagar</button>
-                        <button class="sample" onclick="setSample('Take the next right near Basavanagudi')">Basavanagudi</button>
-                        <button class="sample" onclick="setSample('Head towards Marathahalli bridge')">Marathahalli</button>
-                        <button class="sample" onclick="setSample('Continue to Banashankari')">Banashankari</button>
-                        <button class="sample" onclick="setSample('Turn right after 100m near Indiranagar')">Indiranagar</button>
+                        <button class="sample" onclick="setSample('Turn left after 500m to Hosakerehalli')">Kannada : Hosakerehalli</button>
+                        <button class="sample" onclick="setSample('Continue towards Ameerpet Veedhi')">Telugu : Ameerpet Veedhi</button>
+                        <button class="sample" onclick="setSample('Take the next right near Ranganathan Theru')">Tamil : Ranganathan Theru</button>
+                        <button class="sample" onclick="setSample('Head towards Shivaji Peth')">Marathi : Shivaji Peth</button>
+                        <button class="sample" onclick="setSample('Continue to Rashbehari Sarani')">Bengali : Rashbehari Sarani</button>
+                        <button class="sample" onclick="setSample('Turn right after 100m near Manek Chowk')">Gujarati : Manek Chowk</button>
                     </div>
 
                     <button id="generateButton" class="primary-action" onclick="compareAudio()">
@@ -454,6 +470,11 @@ def get_demo_html() -> HTMLResponse:
                     <audio id="normalizedAudio" controls preload="none"></audio>
                 </div>
             </section>
+
+            <div class="provider-note">
+                Speech synthesis is powered by <strong>Sarvam AI Text-to-Speech</strong>. 
+                MapVoice adds normalization, abbreviation expansion, suffix splitting, and pronunciation hints before generating speech.
+            </div>
 
             <div class="footer">
                 MapVoice · pronunciation-aware normalization for Indian navigation-style text

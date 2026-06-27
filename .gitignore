@@ -3,6 +3,7 @@
 __pycache__
 *.osm
 *.pbf
+*.wav
 indian_street_data/india_roads.osm.pbf
 indian_street_data/india_roads.osm
 indian_street_data/india-latest.osm.pbf

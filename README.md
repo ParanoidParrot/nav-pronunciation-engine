@@ -49,6 +49,12 @@ python -m scripts.voice_demo
 Audio files will be generated in:
 scripts/audio_outputs/
 
+```bash
+python -m uvicorn backend_api.main:app --reload
+```
+
+Open http://127.0.0.1:8000/ to see webpage and demo
+
 
 
 ## Audio Comparison
