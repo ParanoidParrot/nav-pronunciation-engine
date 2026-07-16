@@ -438,9 +438,9 @@ def get_demo_html() -> HTMLResponse:
                     <div class="sample-grid">
                         <button class="sample" onclick="setSample('Turn left after 500m to Hosakerehalli')">Kannada : Hosakerehalli</button>
                         <button class="sample" onclick="setSample('Continue towards Ameerpet Veedhi')">Telugu : Ameerpet Veedhi</button>
-                        <button class="sample" onclick="setSample('Take the next right near Ranganathan Theru')">Tamil : Ranganathan Theru</button>
+                        <button class="sample" onclick="setSample('Take the next right near Anna Salai')">Tamil : Anna Salai</button>
                         <button class="sample" onclick="setSample('Head towards Shivaji Peth')">Marathi : Shivaji Peth</button>
-                        <button class="sample" onclick="setSample('Continue to Rashbehari Sarani')">Bengali : Rashbehari Sarani</button>
+                        <button class="sample" onclick="setSample('Continue to Rabindra Sarani')">Bengali : Rabindra Sarani</button>
                         <button class="sample" onclick="setSample('Turn right after 100m near Manek Chowk')">Gujarati : Manek Chowk</button>
                     </div>
 

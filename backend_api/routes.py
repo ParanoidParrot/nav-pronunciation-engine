@@ -124,7 +124,7 @@ def compare_audio(data: Instruction):
             text=original_text,
             filename=str(raw_file),
             target_language_code="en-IN",
-            speaker="anushka",
+            speaker=None,
             use_cache=True,
         )
 
@@ -132,7 +132,7 @@ def compare_audio(data: Instruction):
             text=speech_text,
             filename=str(normalized_file),
             target_language_code="en-IN",
-            speaker="anushka",
+            speaker=None,
             use_cache=True,
         )
 
