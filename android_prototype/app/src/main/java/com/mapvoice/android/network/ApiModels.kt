@@ -1,12 +1,29 @@
 package com.mapvoice.android.network
 
-data class CompareRequest (
+import com.google.gson.annotations.SerializedName
+
+data class CompareRequest(
     val instruction: String
 )
 
-data class CompareResponse (
-    val original_text: String,
-    val normalized_text: String,
-    val original_audio_url: String,
-    val normalized_audio_url: String
+// This matches your current FastAPI response:
+// original_audio_url + normalized_audio_url.
+// The app labels original_audio_url as "Raw Audio" in the UI.
+data class CompareResponse(
+    @SerializedName("original_text")
+    val originalText: String,
+
+    @SerializedName("normalized_text")
+    val normalizedText: String,
+
+    @SerializedName("speech_text")
+    val speechText: String,
+
+    @SerializedName("raw_audio_url")
+    val rawAudioUrl: String,
+
+    @SerializedName("normalized_audio_url")
+    val normalizedAudioUrl: String
 )
+
+

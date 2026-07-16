@@ -1,11 +1,11 @@
 package com.mapvoice.android.network
 
 import retrofit2.http.Body
-import retrofit2.http.Post
+import retrofit2.http.POST
 
 interface MapVoiceApi {
     @POST("demo/compare")
-    suspend fun compareAudio (
+    suspend fun compareAudio(
         @Body request: CompareRequest
-    ) : CompareResponse
+    ): CompareResponse
 }

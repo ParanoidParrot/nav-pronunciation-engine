@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:label="MapVoice"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Material3.DayNight.NoActionBar">
+        android:theme="@style/Theme.MapVoice">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -16,4 +16,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

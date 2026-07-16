@@ -14,7 +14,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MaterialTheme {
                 Surface {
-                    MapVoiceScreen(this)
+                    MapVoiceScreen(context = this)
                 }
             }
         }

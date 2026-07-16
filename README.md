@@ -76,12 +76,12 @@ Try it out: [TryItHere](https://nav-pronunciation-engine-production.up.railway.a
 - Spells common navigation acronyms such as MG, JP, BTM, NH, and HSR before TTS.
 - Supports Sarvam AI Pronunciation Dictionary via `SARVAM_PRONUNCIATION_DICT_ID`.
 - Uses configurable TTS model, speaker, pace, and temperature for pronunciation experiments.
+- Android MVP tested via APK / internal Play Console track.
 
 ## Future Work
 
 - Multi-language script injection (e.g, Kannada, Hindi, Tamil)
 - Route playback simulation (real-time navigation)
-- Before vs after pronunciation comparison engine
 - Expanded linguistic lexicon with regional metadata
 - Android / iOS prototype integration
 
