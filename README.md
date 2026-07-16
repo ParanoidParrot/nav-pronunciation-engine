@@ -64,7 +64,7 @@ MapVoice can generate before / after speech samples for the same navigation inst
 - **Raw**: original navigation text
 - **Normalized**: text after MapVoice expansion and suffix-aware processing
 
-Try it out: [TryItHere](https://nav-pronunciation-engine-production.up.railway.app/demo)
+Try it out: [TryItHere](https://nav-pronunciation-engine-production.up.railway.app)
 
 
 ## Key Highlights
@@ -73,6 +73,9 @@ Try it out: [TryItHere](https://nav-pronunciation-engine-production.up.railway.a
 - Handles Indian multilingual naming patterns
 - Improves TTS without modifying the speech model
 - Modular pipeline (normalization → parsing → TTS)
+- Spells common navigation acronyms such as MG, JP, BTM, NH, and HSR before TTS.
+- Supports Sarvam AI Pronunciation Dictionary via `SARVAM_PRONUNCIATION_DICT_ID`.
+- Uses configurable TTS model, speaker, pace, and temperature for pronunciation experiments.
 
 ## Future Work
 
